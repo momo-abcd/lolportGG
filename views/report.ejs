@@ -2,19 +2,46 @@
 <html>
   <head>
     <title></title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/css/select2.min.css" rel="stylesheet" />
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/addComment.css' />
   </head>
   <body>
-      <from method="post">
         <div>
             <label>아이디</label>
-            <input type="text">
-            <button>아이디 검색</button>
+            <input type="text" id="summonerID">
+            <!-- <button onclick="searchId()">아이디 검색</button> -->
         </div>
+      <form method="post" action="/report/searchId/">
         <div>
-            <textarea name="" id="" cols="30" rows="10"></textarea>
+          <select name="select" class="form-control" multiple='multiple'>
+            <option name="트롤" value="트롤">의도적 죽음</option>
+            <option name="욕설">욕설</option>
+            <option name="패드립">패드립</option>
+            <option name="">option4</option>
+            <option name="고의 트롤">CS 뺏어먹기</option>
+            <option name="픽창 악의적 닷지유도">픽창 악의적 닷지유도</option>
+          </select>
+            <div class="ui-input-container">
+              <label class="ui-form-input-container">
+                <textarea class="ui-form-input" id="word-count-input"></textarea>
+                <span class="form-input-label">추가 코맨트</span>
+              </label>
+              <p aria-live="polite"><strong><span id="word-count">0</span> words</strong> | <strong><span id="character-count">0</span> characters</strong>.</p>
+            </div>
+
         </div>
-        <input type="submit" value="리폿">
-      </from>
+        <input type="submit" value="리포트">
+      </form>
+      <script src="/javascripts/wordCount.js"></script>
+      <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/js/select2.min.js"></script>
+      <!-- <script src="/javascripts/searchId.js"></script> -->
+      <script>
+        // <!-- // select2 초기화 -->
+        $('select').select2({
+          placeholder: '리포트 유형을 골라주세요.'
+        });
+      </script> 
   </body>
 </html>
