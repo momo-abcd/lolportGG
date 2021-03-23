@@ -5,25 +5,22 @@ var axios = require('axios');
 /* GET home page. */
 router.get('/', function(req, res, next) {
     res.render('report');
-//   res.render('index', { title: 'Express' });
 });
-
-// router.get('/searchID', function(req, res, next) {
-//     res.render('report');
-// //   res.render('index', { title: 'Express' });
-// });
-
 router.post('/searchId/', function(req, res, next) {
-    // console.log(req);
-    res.send(req.body.select[0]);
 
+    let name = req.body.nickname;
+    let apiURL = `https://asia.api.riotgames.com/riot/account/v1/accounts/by-riot-id/${name}/kr1?api_key=RGAPI-bcb587ca-bc74-4c62-97ea-a50ddc587a6b`
 
     // riot api module
-    // axios.post('https://naver.com')
-    // .then(resp => {
-    //     res.send(resp.data);
-    // }).catch(err => {
-    //     console.log(err);
-    // });
+    axios.get(apiURL)
+    .then(axiosRes => {
+        res.send(axiosRes.data);
+    }).catch(err => {
+        console.log('error occured');
+        res.render('report');
+    });
+    // const {data, config} = await axios.get(apiURL);
+    // console.log('asdasd');
+    // res.send(req.body);
 });
 module.exports = router;

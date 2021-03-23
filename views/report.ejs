@@ -8,23 +8,22 @@
   </head>
   <body>
         <div>
+          <form method="post" action="/report/searchId/">
             <label>아이디</label>
-            <input type="text" id="summonerID">
+            <input name="nickname" type="text" id="summonerID">
             <!-- <button onclick="searchId()">아이디 검색</button> -->
         </div>
-      <form method="post" action="/report/searchId/">
         <div>
           <select name="select" class="form-control" multiple='multiple'>
-            <option name="트롤" value="트롤">의도적 죽음</option>
+            <option name="고의적죽음" value="트롤">고의적 죽음</option>
             <option name="욕설">욕설</option>
             <option name="패드립">패드립</option>
-            <option name="">option4</option>
             <option name="고의 트롤">CS 뺏어먹기</option>
-            <option name="픽창 악의적 닷지유도">픽창 악의적 닷지유도</option>
+            <option name="픽창_악의적_닷지유도">픽창 악의적 닷지유도</option>
           </select>
             <div class="ui-input-container">
               <label class="ui-form-input-container">
-                <textarea class="ui-form-input" id="word-count-input"></textarea>
+                <textarea name="comment" class="ui-form-input" id="word-count-input"></textarea>
                 <span class="form-input-label">추가 코맨트</span>
               </label>
               <p aria-live="polite"><strong><span id="word-count">0</span> words</strong> | <strong><span id="character-count">0</span> characters</strong>.</p>
