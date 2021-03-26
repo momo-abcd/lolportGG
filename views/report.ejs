@@ -8,17 +8,17 @@
   </head>
   <body>
         <div>
-          <form method="post" action="/report/searchId/">
+          <form method="POST" enctype="multipart/form-data" action="/report/searchId/">
             <label>아이디</label>
             <input name="nickname" type="text" id="summonerID">
-            <!-- <button onclick="searchId()">아이디 검색</button> -->
         </div>
+
         <div>
           <select name="select" class="form-control" multiple='multiple'>
-            <option name="고의적죽음" value="트롤">고의적 죽음</option>
+            <option name="고의적_죽음" value="고의적_죽음">고의적 죽음</option>
             <option name="욕설">욕설</option>
             <option name="패드립">패드립</option>
-            <option name="고의 트롤">CS 뺏어먹기</option>
+            <option name="고의_트롤">CS 뺏어먹기</option>
             <option name="픽창_악의적_닷지유도">픽창 악의적 닷지유도</option>
           </select>
             <div class="ui-input-container">
@@ -28,6 +28,9 @@
               </label>
               <p aria-live="polite"><strong><span id="word-count">0</span> words</strong> | <strong><span id="character-count">0</span> characters</strong>.</p>
             </div>
+            <div class="captureFile">
+              <input type="file" name="attachment" id="attachment">
+            </div>
 
         </div>
         <input type="submit" value="리포트">
@@ -35,7 +38,6 @@
       <script src="/javascripts/wordCount.js"></script>
       <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.9/js/select2.min.js"></script>
-      <!-- <script src="/javascripts/searchId.js"></script> -->
       <script>
         // <!-- // select2 초기화 -->
         $('select').select2({
