@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1><a href="/">롤폿</a></h1>
+    이곳은 search Page!   <br><br><br><br>
+    <% for(let i = 0; i < data.length; i++){ %>
+       <%= data[i].리폿날짜.getFullYear() %>년
+       <%= data[i].리폿날짜.getMonth() + 1 %>월 
+       <%= data[i].리폿날짜.getDate() %>일 
+       <br>
+       <% if(data[i].고의적_죽음) { %> 고의적 죽음 <br> <% } %> 
+       <% if(data[i].욕설) { %> 욕설 <br> <% } %> 
+       <% if(data[i].패드립) { %> 패드립 <br> <% } %>
+       <% if(data[i].픽창_악의적_닷지유도) { %> 픽창 악의적 닷지유도 <br> <% } %>
+       <% if(data[i].comment) { %> comment : <%=data[i].comment %> <br> <% } %>
+       <% if(parseInt(data[i].Img)) { %>   <!-- parseInt함수를 쓰는 이유: Img 컬럼은 varchar 탑이이니까 '0'은 무조건 True임-->
+            <% let a = data[i].Img.split(';') %>
+            <% for(let j = 0; j < a.length; j++) { %>
+                <img width="300px" height="300px" src='/uploads/<%= a[j] %>' />
+            <% } %>
+        <% } %>
+       <hr>
+    <% } %>
+</body>
+</html>

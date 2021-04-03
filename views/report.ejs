@@ -7,6 +7,7 @@
     <link rel='stylesheet' href='/stylesheets/addComment.css' />
   </head>
   <body>
+    <h1><a href="/">롤폿</a></h1>
         <div>
           <form method="POST" enctype="multipart/form-data" action="/report/searchId/">
             <label>아이디</label>
@@ -29,7 +30,7 @@
               <p aria-live="polite"><strong><span id="word-count">0</span> words</strong> | <strong><span id="character-count">0</span> characters</strong>.</p>
             </div>
             <div class="captureFile">
-              <input type="file" name="attachment" id="attachment">
+              <input type="file" name="attachment" id="attachment" multiple>
             </div>
 
         </div>

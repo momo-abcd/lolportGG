@@ -1,11 +1,33 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>롤폿</title>
+    <link rel='stylesheet' href='/stylesheets/index.css' />
+    <script src="/javascripts/includeHTML.js"></script>
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <nav include-html="/htmls/nav.html"></nav>
+
+
+
+    <div class="container">
+      <div class="container__item">
+        <form class="form" action="/search/userName/" method="GET">
+          <input type="text" class="form__field" placeholder="소환사 검색" name="summonerName" id="summonerName"/>
+          <input type="submit" value="제출" style="color:transparent;background:url(/images/ico-search.png) no-repeat #4d90fe center;" class="btn btn--primary btn--inside uppercase" />
+        </form>
+      </div>
+      
+      <div class="container__item container__item--bottom">
+        <div>
+          <a id="go" href="/report">Go 리포트</a>.
+        </div>
+      </div>
+    </div>
+
+    </form>
+    <script>
+      includeHTML();
+  </script>
   </body>
 </html>
