@@ -18,3 +18,19 @@ body {
   .select2-container .select2-search--inline .select2-search__field{
     margin-top:8px;
   }
+  #summonerID {
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    padding:6px 3px;
+    outline:none;
+  }
+  #triangle-parent {
+    position: relative;
+    cursor: pointer;
+  }
+  #triangle {
+    font-size:20px;
+    position: absolute;
+    z-index:999;
+    left:470px;
+  }
