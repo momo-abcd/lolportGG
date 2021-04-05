@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/searchNav.css">
+    <link rel="stylesheet" href="/stylesheets/navBar.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+  <script src="/javascripts/includeHTML.js"></script>
     <title>Document</title>
 </head>
 <body>
-    <h1><a href="/">롤폿</a></h1>
+  <div include-html="/htmls/searchNav.html"></div>
     이곳은 search Page!   <br><br><br><br>
     <% for(let i = 0; i < data.length; i++){ %>
        <%= data[i].리폿날짜.getFullYear() %>년
@@ -26,5 +30,9 @@
         <% } %>
        <hr>
     <% } %>
+
+    <script>
+        includeHTML();
+    </script>
 </body>
 </html>

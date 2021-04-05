@@ -1,4 +1,3 @@
-
 .header-logo {
     display:flex;
     justify-content: center;
@@ -10,7 +9,7 @@ nav.primary-navigation {
     /* padding: 120px 0 0 0; */
     text-align: center;
     font-size: 16px;
-    margin-top:10px;
+    margin-top:30px;
   }
   nav.primary-navigation ul li {
     list-style: none;
