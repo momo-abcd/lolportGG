@@ -6,12 +6,13 @@
     <link rel="stylesheet" href="/stylesheets/searchNav.css">
     <link rel="stylesheet" href="/stylesheets/navBar.css">
     <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/searchPage/cardPost.css">
   <script src="/javascripts/includeHTML.js"></script>
     <title>Document</title>
 </head>
 <body>
   <div include-html="/htmls/searchNav.html"></div>
-    이곳은 search Page!   <br><br><br><br>
+    <!--
     <% for(let i = 0; i < data.length; i++){ %>
        <%= data[i].리폿날짜.getFullYear() %>년
        <%= data[i].리폿날짜.getMonth() + 1 %>월 
@@ -22,7 +23,7 @@
        <% if(data[i].패드립) { %> 패드립 <br> <% } %>
        <% if(data[i].픽창_악의적_닷지유도) { %> 픽창 악의적 닷지유도 <br> <% } %>
        <% if(data[i].comment) { %> comment : <%=data[i].comment %> <br> <% } %>
-       <% if(parseInt(data[i].Img)) { %>   <!-- parseInt함수를 쓰는 이유: Img 컬럼은 varchar 탑이이니까 '0'은 무조건 True임-->
+       <% if(parseInt(data[i].Img)) { %>    parseInt함수를 쓰는 이유: Img 컬럼은 varchar 탑이이니까 '0'은 무조건 True임
             <% let a = data[i].Img.split(';') %>
             <% for(let j = 0; j < a.length; j++) { %>
                 <img width="300px" height="300px" src='/uploads/<%= a[j] %>' />
@@ -30,7 +31,12 @@
         <% } %>
        <hr>
     <% } %>
-
+    -->
+    <% for(let i=0; i<data.length;i++) { %>
+      <% let a = data[i].Img.split(';') %>
+      <% let cool = data[i] %>
+      <% include ./searchInclude/cardPost %>
+    <% } %>
     <script>
         includeHTML();
     </script>
