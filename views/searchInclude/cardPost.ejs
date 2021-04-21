@@ -1,51 +1,60 @@
 <div class = "cardParent">
-  <div class="card">
+<div class="card">
 
-    <!-- 카드 헤더 -->
-    <div class="card-header" >
-      <% if(a[0]) { %>
-      <img width="230px" height="80px" src="/uploads/<%=a[0] %>" /> x <%= a.length %>
-      <% } else { %>
-      <div style="position:relative;">
-        <img style:"line-height:3;" width="100px" height="80px" src="/images/imgNot.png" />
-      </div>
-      <% } %>
+<!-- 카드 헤더 -->
+<div class="card-header" >
+  <% if(a[0]) { %>
+<!--
+  <% let str=""; a.forEach(img => {str+=img;str+=',';}) %>
+  <%= str %>
+-->
+<div id="Post">
+    <%  let str2=""; a.forEach(img => {str2+=img+";"}) %>
+    <!--<a class="myBtn" onclick="(function () {alert('<%= str2%>')})()">-->
+    <a class="myBtn" onclick="openModal('<%= str2 %>')">
+    <img width="230px" height="80px" src="/uploads/<%=a[0] %>" /> x <%= a.length-1 %>
+    </a>
 
-    </div>
+</div>
+  <% } else {%>
+				<div style="position:relative;">
+					<img style:"line-height:3;" width="100px" height="80px" src="/images/imgNot.jpg" />
+				</div>
+			<% } %>
+</div>
 
     <!--  카드 바디 -->
 
     <div class="card-body">
 
-      <!--  카드 바디 헤더 -->
+    <!--  카드 바디 헤더 -->
 
-      <div style="color:#00b7ff;"class="card-body-header">
-        <%= cool.comment %>
-        asdfkalsdfla asldkfasldf ljasdf lasfsadf sdakflsdakjflsadflsaldfsdalfjsdaljfsldajf lsadl flsda flskdajflljsflsdajflksdajklfsdjlflsdjf lsjl fsdj fjlsa flks
-      </div>
-      <!--  카드 바디 본문 -->
+    <div class="card-body-header">
+    <%= cool.comment %>
+    </div>
+    <!--  카드 바디 본문 -->
 
-      <!--  카드 바디 푸터 -->
-      <div class="card-body-footer">
-        <p class="card-body-hashtag">
-        <% if(cool.고의적_죽음) { %> #고의적 죽음 <% } %> 
-        <% if(cool.욕설) { %> #욕설  <% } %> 
-        <% if(cool.패드립) { %> <span style="color:red;">#패드립</span>  <% } %>
-        <% if(cool.픽창_악의적_닷지유도) { %> #픽창 악의적 닷지유도  <% } %>
-        </p>
-        <hr style="margin-bottom: 8px; opacity: 0.5; border-color: #EF5A31">
-        <i class="reg_date">
-          <%=cool.리폿날짜.getFullYear()%>/
-          <% let m = cool.리폿날짜.getMonth() + 1 %>
-          <% m < 10 ? m = '0' + m : m = m %>
-          <%=m%>/
-          <% let d = data[i].리폿날짜.getDay() + 1 %>
-          <% d < 10 ? d = '0' + d : d = d %>
-          <%=d%>
-        </i>
-      </div>
+    <!--  카드 바디 푸터 -->
+    <div class="card-body-footer">
+    <p class="card-body-hashtag">
+    <% if(cool.고의적_죽음) { %> #고의적 죽음 <% } %> 
+    <% if(cool.욕설) { %> #욕설  <% } %> 
+    <% if(cool.패드립) { %> <span style="color:red;">#패드립</span>  <% } %>
+    <% if(cool.픽창_악의적_닷지유도) { %> #픽창 악의적 닷지유도  <% } %>
+    </p>
+    <hr style="margin-bottom: 8px; opacity: 0.5; border-color: #EF5A31">
+    <i class="reg_date">
+    <%=cool.리폿날짜.getFullYear()%>/
+    <% let m = cool.리폿날짜.getMonth() + 1 %>
+    <% m < 10 ? m = '0' + m : m = m %>
+    <%=m%>/
+    <% let d = data[i].리폿날짜.getDate()%>
+    <% d < 10 ? d = '0' + d : d = d %>
+    <%=d%>
+    </i>
+    </div>
 
     </div>
 
-  </div>
-</div>	
+    </div>
+    </div>	

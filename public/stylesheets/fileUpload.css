@@ -69,6 +69,7 @@
   }
  .fileContainer div.fileContainer {
     width: 100%;
+    width:300px;
     padding: 0 2rem;
   }
   

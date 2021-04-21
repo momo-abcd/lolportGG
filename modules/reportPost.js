@@ -11,11 +11,13 @@ const reportPost = function (req, res, next) {
         res.render('fileErr');
     }else {
         let name = encodeURI(req.body.nickname);
-        const apiKey = 'RGAPI-21931ccc-1c29-4d71-bbc6-b5b8df19aadc';
+        const apiKey = 'RGAPI-7fa0a3ee-37e8-4f3d-af32-130e8438a459';
         let reqRiotApi = `https://asia.api.riotgames.com/riot/account/v1/accounts/by-riot-id/${name}/kr1?api_key=${apiKey}`
+        console.log('사진 : ', req.files);
         let imgStr = "";
         if(req.files != []){
             for(let i = 0; i < req.files.length ; i++) {
+            console.log('사진 이미지 : ', req.files[i].filename);
                 imgStr += req.files[i].filename + ';';
             }
         }

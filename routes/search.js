@@ -23,6 +23,7 @@ router.get('/userName/:summonerName', function(req, res, next) {
 
   connection.query(getQuery,(err, rows, fields)  => {
     if(err) console.log(err);
+    console.log('data는 ', rows)
     res.render('search', {data:rows});
   })
 });
