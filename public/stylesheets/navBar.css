@@ -10,6 +10,7 @@ nav.primary-navigation {
     text-align: center;
     font-size: 16px;
     margin-top:30px;
+
   }
   nav.primary-navigation ul li {
     list-style: none;
@@ -23,9 +24,10 @@ nav.primary-navigation {
     font-family: arvo;
   }
   nav.primary-navigation li a {
+  font-weight:400;
     color: black;
   }
-  nav.primary-navigation li a:hover {
+  nav.primary-navigation li a:hover{
     color: #3ca0e7;
   }
   nav.primary-navigation li:hover {
@@ -76,4 +78,48 @@ nav.primary-navigation {
   }
 .primary-navigation{
     margin-bottom:30px;
+}
+
+@media screen and (max-width:560px) {
+ nav.primary-navigation ul{
+    display:flex;
+    flex-direction:column;
+    /* padding: 120px 0 0 0; */
+    text-align: center;
+    font-size: 16px;
+    margin-top:30px;
+
+  } 
+  nav.primary-navigation ul li {
+  display:block;
+  background-color:lightgray;
+  opacity:0.8;
+  width:100%;
+  font-family: arvo;
+  margin-bottom:5px;
+  border:none;
+  border-radius:5px;
+  font-weight:bold;
+  }
+  nav.primary-navigation ul li{
+  background-color:#C7C9C7;
+  background-color:rgba(199,201,199,0.3);
+  padding:6px 0;
+  }
+
+  nav.primary-navigation li a {
+  display:block;
+  width:100%;
+    color: black;
+  }
+  nav.primary-navigation li a:hover{
+    color: #3ca0e7;
+  }
+  nav.primary-navigation li:hover {
+    cursor: pointer;
+    color: #3ca0e7;
+  }
+  .ui-input-container {
+    margin-top:30px;
+  }
 }
