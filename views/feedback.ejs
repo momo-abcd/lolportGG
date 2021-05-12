@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/searchNav.css">
+    <link rel="stylesheet" href="/stylesheets/navBar.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="/javascripts/includeHTML.js"></script>
+<style>
+p {
+color:black;
+}
+.editor-container {
+width:100%;
+display:flex;
+justify-content:center;
+}
+.trumbowyg-editor {
+background-color:white;
+}
+.editor-container > form {
+width:500px;
+position:relative;
+}
+
+body{background:#f5f6fa}
+
+
+
+
+.text-white-50 { color: rgba(255, 255, 255, .5); }
+.bg-blue { background-color:#00b5ec; }
+.border-bottom { border-bottom: 1px solid #e5e5e5; }
+.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+
+</style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.23.0/ui/trumbowyg.min.css" integrity="sha512-iw/TO6rC/bRmSOiXlanoUCVdNrnJBCOufp2s3vhTPyP1Z0CtTSBNbEd5wIo8VJanpONGJSyPOZ5ZRjZ/ojmc7g==" crossorigin="anonymous" />
+
+    <title>Document</title>
+</head>
+<body>
+  <div include-html="/htmls/searchNav.html"></div>
+    this is feedback page
+<div class="editor-container">
+    <form action="/bbs/feedback_send/"method="post">
+
+      <textarea name="text" id="editor"></textarea>
+      <input name="name" placeholder="닉네임을 입력하세요" type=="text" />
+      <input name="password" placeholder="비밀번호를 입력하세요" type=="text" />
+      <input type="submit" value="보내기" />
+    </form>
+</div>
+
+<!--   -->
+<main role="main" class="container bootdey.com">
+  <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-blue rounded box-shadow">
+    <img class="mr-3" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" width="48" height="48">
+    <div class="lh-100">
+      <h6 class="mb-0 text-white lh-100">어떠한 것이라도 좋습니다. 많은 피드백 부탁드립니다!</h6>
+      <small>-moosee 운영자-</small>
+    </div>
+  </div>
+
+  <div style="width:800px"class="my-3 p-3 bg-white rounded box-shadow">
+    <h6 class="border-bottom border-gray pb-2 mb-0">Recent updates</h6>
+
+		<div id="feedback_page">
+				<% for(let i=0; i<data.length;i++) { %>
+					<div class="media text-muted pt-3">
+            <% let a = Math.floor(Math.random() * 5 + 2) %>
+						<img src="https://bootdey.com/img/Content/avatar/avatar<%=a%>.png" + .png" alt="" class="mr-2 rounded" width="32" height="32">
+						<p class="media-body pb-3 mb-0 lh-125 border-bottom border-gray">
+							<strong class="d-block text-gray-dark">@<%=data[i].name%> <small><%=data[i].ip %></small></strong>
+							<span id="board_content"><%= data[i].content %></span>
+					</p>
+					</div>
+				<% } %>
+		</div>
+	
+
+	<small class="d-block text-right mt-3">
+		<nav aria-label="Page navigation example">
+  <ul class="pagination">
+  <% if (indexList[0] !=0) { %>
+    <li class="page-item"><a class="page-link" href="/bbs/feedback/?id=<%=indexList[0]-1%>">◀</a></li>
+   <% } %>
+
+  <% for(let i =0;i<indexList.length;i++) { %>
+    <li class="page-item"><a class="page-link" href="/bbs/feedback/?id=<%=indexList[i]%>"><%=indexList[i]%></a></li>
+  <% }%>
+    <li class="page-item"><a class="page-link" href="/bbs/feedback/?id=<%=indexList[4]+1%>">▶</a></li>
+  </ul>
+</nav>
+    </small>
+
+  </div>
+</main>
+
+<!--<input type="button" value="ajax 버튼" id="ajax_btn">-->
+<script>
+function setContent(str){
+document.querySelector('#board_content').innerHTML = str;
+}
+
+</script>
+<!--
+<script>
+const btn  = document.getElementById("ajax_btn");
+
+btn.addEventListener("click", () => {
+    const xhr = new XMLHttpRequest();
+
+    xhr.open('GET','./feedback_page?id=1',true);
+
+    xhr.send();
+
+    xhr.onload = () => {
+      if(xhr.status == 200) {
+      console.log(xhr.response);
+      console.log('통신 성공');
+      }else {
+      console.log('통신 실패');
+      }
+    }
+});
+</script>
+-->
+
+
+<!-- -->
+
+
+
+
+<!-- Import jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<!-- Import Trumbowyg -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.23.0/trumbowyg.min.js" integrity="sha512-sffB9/tXFFTwradcJHhojkhmrCj0hWeaz8M05Aaap5/vlYBfLx5Y7woKi6y0NrqVNgben6OIANTGGlojPTQGEw==" crossorigin="anonymous"></script>
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.23.0/plugins/fontsize/trumbowyg.fontsize.min.js" integrity="sha512-DOJaq3OCe5hLSr73aQBMiJY4kc+L5UwessOl6g2oxyy7VDnZVWt+TgWVy2nh2ypf7bwoaxZmPnIMiRC5PNZecA==" crossorigin="anonymous"></script>
+<script>
+
+$('#editor')
+.trumbowyg({
+    btns: [
+        ['fontsize'],
+        ['strong', 'em'],
+        ['justifyLeft', 'justifyCenter'],
+    ],
+    plugins: {
+        fontsize: {
+            sizeList: [
+                '20px',
+                '30px',
+                '40px',
+                '60px',
+            ],
+            allowCustomSize: false
+        }    
+	}
+});
+</script>
+<script>
+        includeHTML();
+    </script>
+</body>
+</html>

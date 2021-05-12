@@ -43,6 +43,9 @@ function openModal(imgs) {
   }
   closeBtn.onclick = function() {
       post.removeChild(p);
+      isModalOn=false;
+      curIndex = 0;
+
   }
     isModalOn = true;
     p.style.display='block';
