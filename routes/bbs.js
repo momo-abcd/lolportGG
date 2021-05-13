@@ -43,9 +43,11 @@ function pageCount(pageIndex) {
 }
 
 router.get('/feedback/',feedbackPage, function(req, res, next) {
-    let pageIndex = req.param('id');
+    let pageIndex= req.param('id');
+    let pageIndexToSend =  req.param('id');
     if(pageIndex ==undefined || pageIndex < 0|| pageIndex ==0 || pageIndex == 1) {
       pageIndex = 0;
+      pageIndexToSend = 1;
     }
     else{
       pageIndex = (pageIndex - 1) *10;
@@ -58,12 +60,13 @@ router.get('/feedback/',feedbackPage, function(req, res, next) {
       if(err) console.log(err);
       //req.body.data = rows;
       let data = rows[0];
-      let cnt = rows[1];
+      let cnt = rows[1][0].cnt;
       let index;
       if(req.param('id') == undefined) index=1;
       else index=req.param('id');
       let indexList = pageCount(index);
-			res.render('feedback.ejs',{data:data, cnt:cnt, indexList:indexList});
+      console.log(cnt)
+			res.render('feedback.ejs',{data:data,pageIndex:pageIndexToSend, cnt:cnt, indexList:indexList});
       });
 });
 

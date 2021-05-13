@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="/stylesheets/navBar.css">
     <link rel="stylesheet" href="/stylesheets/style.css">
     <script src="/javascripts/includeHTML.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="/javascripts/paging.js"></script>
 <style>
 p {
 color:black;
@@ -42,7 +44,7 @@ body{background:#f5f6fa}
 </head>
 <body>
   <div include-html="/htmls/searchNav.html"></div>
-    this is feedback page
+  <p>ㅤ</p>
 <div class="editor-container">
     <form action="/bbs/feedback_send/"method="post">
 
@@ -53,6 +55,8 @@ body{background:#f5f6fa}
     </form>
 </div>
 
+<%= cnt %>
+<%= pageIndex %>
 <!--   -->
 <main role="main" class="container bootdey.com">
   <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-blue rounded box-shadow">
@@ -83,20 +87,27 @@ body{background:#f5f6fa}
 	<small class="d-block text-right mt-3">
 		<nav aria-label="Page navigation example">
   <ul class="pagination">
-  <% if (indexList[0] !=0) { %>
-    <li class="page-item"><a class="page-link" href="/bbs/feedback/?id=<%=indexList[0]-1%>">◀</a></li>
+  <% if (pageIndex != 1) { %>
+    <li class="page-item"><a class="page-link" href="/bbs/feedback/?id=<%=pageIndex-1%>">◀</a></li>
    <% } %>
 
-  <% for(let i =0;i<indexList.length;i++) { %>
+  <% for(let i =0;i<(cnt/10+1);i++) { %>
+    <% if(pageIndex == indexList[i]) { %>
+    <li class="page-item active"><a class="page-link" href="/bbs/feedback/?id=<%=indexList[i]%>"><%=indexList[i]%></a></li>
+      <% } else { %>
     <li class="page-item"><a class="page-link" href="/bbs/feedback/?id=<%=indexList[i]%>"><%=indexList[i]%></a></li>
+        <% } %>
   <% }%>
-    <li class="page-item"><a class="page-link" href="/bbs/feedback/?id=<%=indexList[4]+1%>">▶</a></li>
+    <% if (pageIndex != Math.floor(cnt/10+1)) { %>
+    <li class="page-item"><a class="page-link" href="/bbs/feedback/?id=<%=pageIndex+1%>">▶</a></li>
+   <% } %>
   </ul>
 </nav>
     </small>
 
   </div>
 </main>
+<div id="paging"></div>
 
 <!--<input type="button" value="ajax 버튼" id="ajax_btn">-->
 <script>
