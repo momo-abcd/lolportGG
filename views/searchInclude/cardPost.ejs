@@ -12,7 +12,7 @@
     <%  let str2=""; a.forEach(img => {str2+=img+";"}) %>
     <!--<a class="myBtn" onclick="(function () {alert('<%= str2%>')})()">-->
     <a class="myBtn" onclick="openModal('<%= str2 %>')">
-    <img width="230px" height="80px" src="/uploads/<%=a[0] %>" /> x <%= a.length-1 %>
+    <img style="cursor:pointer"width="230px" height="80px" src="/uploads/<%=a[0] %>" /> x <%= a.length-1 %>
     </a>
 
 </div>

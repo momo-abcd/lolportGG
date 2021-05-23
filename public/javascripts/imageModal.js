@@ -5,7 +5,12 @@ let isModalOn = false;
 let curIndex = 0;
 
 function openModal(imgs) {
-  let str = imgs.split(';');
+  let str;
+  if(typeof imgs == 'string')
+    str = imgs.split(';');
+  else 
+    str = imgs;
+  console.log(str,123123123);
   const p = document.createElement("div");
   p.classList.add('modal');
   p.id = 'myModal';
@@ -22,6 +27,7 @@ function openModal(imgs) {
       <ul style="height:90%;display:flex;justify-content:center;align-items:center;" class="mySlides">
       ${li}
       </ul>
+        <h2 style="color:black;"><span id="curIndex">${curIndex+1}</span>/${(str.length-2)}</h2>
     <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
     <a class="next" onclick="plusSlides(1)">&#10095;</a>
 		</div>
@@ -52,22 +58,6 @@ function openModal(imgs) {
 }
 
 
-/*
-function plusSlides(btn) {
-  if(isModalOn){
-    const slides = document.getElementsByClassName('mySlides')[0];
-    if(slides.children.length > 1) {
-      if(btn == 1) {
-        curIndex+=1;
-        showSlides();
-      }else {
-        curIndex-=1;
-        showSlides();
-      }
-    }
-  }
-}
-*/
 function plusSlides(btn) {
   if(isModalOn) {
     const slides = document.getElementsByClassName('mySlides')[0];
@@ -100,6 +90,7 @@ function showSlides(...args) {
     }
     slides[curIndex].style.display='block';
   }
+const indexNum = document.getElementById("curIndex").textContent=curIndex+1;
 }
 
 /*

@@ -1,6 +1,3 @@
-  var totalData = 1000;    // 총 데이터 수
-  var dataPerPage = 20;    // 한 페이지에 나타낼 데이터 수
-  var pageCount = 10;
 function paging(totalData, dataPerPage, pageCount, currentPage){
 
   let totalPage = Math.ceil(totalData/dataPerPage);
@@ -9,9 +6,14 @@ function paging(totalData, dataPerPage, pageCount, currentPage){
   console.log("pageGroup : " + pageGroup);
 
   let last = pageGroup * pageCount;
-  if (last > totalPage)
+  let first
+  if (last > totalPage){
     last = totalPage;
-  let first = last - (pageCount-1);
+     first = last - (pageCount-1)+1;
+  }else{
+     first = last - (pageCount-1);
+  }
+
   let next = last+1;
   let prev = first-1;
 
@@ -22,14 +24,19 @@ function paging(totalData, dataPerPage, pageCount, currentPage){
 
   let $pingingView = $("#paging");
   let html = "";
+  if(prev > 0)
+    html += "<li class='page-item'><a class='page-link' href='/bbs/feedback?id=" + prev  + "'>◀</a></li>"
+
 
   for(let i=first;i <= last; i++){
-    html += "<a herf='#' id=" + i + ">" + i + "</a>";
+    if(currentPage == i){
+    html += "<li class='page-item active'><a class='page-link' href='/bbs/feedback?id=" + i  + "'>" + i + "</a></li>"
+    }else{
+    html += "<li class='page-item'><a class='page-link' href='/bbs/feedback?id=" + i  + "'>" + i + "</a></li>"
+    }
   }
-  $("#paging").html(html);
+  if(last < totalPage)
+    html += "<li class='page-item'><a class='page-link' href='/bbs/feedback?id=" + next  + "'>▶</a></li>"
+  $(".pagination").html(html);
 }
-
-$("document").ready(function(){
-    paging(totalData,dataPerPage,pageCount,1);
-    });
 

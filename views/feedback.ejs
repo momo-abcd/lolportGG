@@ -10,6 +10,13 @@
     <script src="/javascripts/includeHTML.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="/javascripts/paging.js"></script>
+    <script>
+    $("document").ready(function(){
+    console.log(<%= cnt %>);
+    paging(<%=cnt%>,10,5,<%= pageIndex %>);
+    });
+
+    </script>
 <style>
 p {
 color:black;
@@ -55,8 +62,6 @@ body{background:#f5f6fa}
     </form>
 </div>
 
-<%= cnt %>
-<%= pageIndex %>
 <!--   -->
 <main role="main" class="container bootdey.com">
   <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-blue rounded box-shadow">
@@ -76,8 +81,11 @@ body{background:#f5f6fa}
             <% let a = Math.floor(Math.random() * 5 + 2) %>
 						<img src="https://bootdey.com/img/Content/avatar/avatar<%=a%>.png" + .png" alt="" class="mr-2 rounded" width="32" height="32">
 						<p class="media-body pb-3 mb-0 lh-125 border-bottom border-gray">
-							<strong class="d-block text-gray-dark">@<%=data[i].name%> <small><%=data[i].ip %></small></strong>
-							<span id="board_content"><%= data[i].content %></span>
+            <% let ip = data[i].ip.split('.'); %>
+            
+							<strong class="d-block text-gray-dark">@<%=data[i].name%> <small><%=ip[0]%>.<%=ip[1]%>.xx.xx</small></strong>
+							<span style="white-space: pre-wrap;"id="board_content<%=i%>"><%= data[i].content %></span>
+              <span id="tmp"></span>
 					</p>
 					</div>
 				<% } %>
@@ -87,20 +95,8 @@ body{background:#f5f6fa}
 	<small class="d-block text-right mt-3">
 		<nav aria-label="Page navigation example">
   <ul class="pagination">
-  <% if (pageIndex != 1) { %>
-    <li class="page-item"><a class="page-link" href="/bbs/feedback/?id=<%=pageIndex-1%>">◀</a></li>
-   <% } %>
-
-  <% for(let i =0;i<(cnt/10+1);i++) { %>
-    <% if(pageIndex == indexList[i]) { %>
-    <li class="page-item active"><a class="page-link" href="/bbs/feedback/?id=<%=indexList[i]%>"><%=indexList[i]%></a></li>
-      <% } else { %>
-    <li class="page-item"><a class="page-link" href="/bbs/feedback/?id=<%=indexList[i]%>"><%=indexList[i]%></a></li>
-        <% } %>
-  <% }%>
-    <% if (pageIndex != Math.floor(cnt/10+1)) { %>
-    <li class="page-item"><a class="page-link" href="/bbs/feedback/?id=<%=pageIndex+1%>">▶</a></li>
-   <% } %>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      
   </ul>
 </nav>
     </small>
@@ -109,8 +105,14 @@ body{background:#f5f6fa}
 </main>
 <div id="paging"></div>
 
-<!--<input type="button" value="ajax 버튼" id="ajax_btn">-->
+<!--
+<input type="button" value="ajax 버튼" id="ajax_btn">
+-->
+<% let a = data[0].content; %>
 <script>
+let b = '<%=a%>';
+const tmp = document.getElementById('tmp');
+console.log(tmp);
 function setContent(str){
 document.querySelector('#board_content').innerHTML = str;
 }

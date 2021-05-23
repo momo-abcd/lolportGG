@@ -1,0 +1,105 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,400i,700");
+
+.reportInfo .card2 {
+color:black;
+margin: 50px auto;
+padding: 2rem 0;
+         font-size: 16px;
+         font-family: Montserrat, sans-serif;
+         background-color: #fff;
+         max-width: 360px;
+display: flex;
+         flex-direction: column;
+overflow: hidden;
+          border-radius: 2rem;
+          box-shadow: 0px 1rem 1.5rem rgba(0,0,0,0.5);
+}
+
+
+
+.reportInfo .card2 h2.name {
+  text-align: center;
+padding: 0 2rem 0.5rem;
+margin: 0;
+}
+.reportInfo .card2 .title {
+color: #a0a0a0;
+       font-size: 0.85rem;
+       text-align: center;
+padding: 0 2rem 1.2rem;
+}
+.reportInfo .card2 .actions {
+padding: 0 2rem 1.2rem;
+display: flex;
+         flex-direction: column;
+order: 99;
+}
+.reportInfo .card2 .actions .follow-info {
+padding: 0 0 1rem;
+display: flex;
+}
+.reportInfo .card2 .actions .follow-info h2 {
+  text-align: center;
+width: 50%;
+margin: 0;
+        box-sizing: border-box;
+}
+
+#pedrip2{
+width:100%;
+}
+.reportInfo .card2 .actions .follow-info h2 a {
+  text-decoration: none;
+padding: 0.8rem;
+display: flex;
+         flex-direction: column;
+         border-radius: 0.8rem;
+transition: background-color 100ms ease-in-out;
+}
+.reportInfo .card2 .actions .follow-info h2 a span {
+color: #1c9eff;
+       font-weight: bold;
+       transform-origin: bottom;
+transform: scaleY(1.3);
+transition: color 100ms ease-in-out;
+}
+#pedrip {color:red}
+.reportInfo .card2 .actions .follow-info h2 a small {
+color: #afafaf;
+       font-size: 0.85rem;
+       font-weight: normal;
+}
+.reportInfo .card2 .actions .follow-info h2 a:hover {
+  background-color: #f2f2f2;
+}
+.reportInfo .card2 .actions .follow-info h2 a:hover span {
+color: #007ad6;
+}
+.reportInfo .card2 .actions .follow-btn button {
+cursor:pointer;
+color: inherit;
+font: inherit;
+      font-weight: bold;
+      background-color: #ffd01a;
+width: 100%;
+border: none;
+padding: 1rem;
+outline: none;
+         box-sizing: border-box;
+         border-radius: 1.5rem/50%;
+transition: background-color 100ms ease-in-out, transform 200ms cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+.reportInfo .card2 .actions .follow-btn button:hover {
+  background-color: #efb10a;
+transform: scale(1.1);
+}
+.reportInfo .card2 .actions .follow-btn button:active {
+  background-color: #e8a200;
+transform: scale(1);
+}
+.reportInfo .card2 .desc {
+  text-align: justify;
+padding: 0 2rem 2.5rem;
+order: 100
+}
+
