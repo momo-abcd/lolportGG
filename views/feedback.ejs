@@ -18,6 +18,15 @@
 
     </script>
 <style>
+.media-body p{
+  margin-top:5px;
+}
+strong {
+color:black;
+}
+small{
+color:rgba(0,0,0,0.5);
+}
 p {
 color:black;
 }
@@ -74,19 +83,18 @@ body{background:#f5f6fa}
 
   <div style="width:800px"class="my-3 p-3 bg-white rounded box-shadow">
     <h6 class="border-bottom border-gray pb-2 mb-0">Recent updates</h6>
-
 		<div id="feedback_page">
 				<% for(let i=0; i<data.length;i++) { %>
 					<div class="media text-muted pt-3">
             <% let a = Math.floor(Math.random() * 5 + 2) %>
-						<img src="https://bootdey.com/img/Content/avatar/avatar<%=a%>.png" + .png" alt="" class="mr-2 rounded" width="32" height="32">
-						<p class="media-body pb-3 mb-0 lh-125 border-bottom border-gray">
+						<img src="https://bootdey.com/img/Content/avatar/avatar<%=a%>.png"alt="" class="mr-2 rounded" width="32" height="32">
+						<div class="media-body pb-3 mb-0 lh-125 border-bottom border-gray">
             <% let ip = data[i].ip.split('.'); %>
             
 							<strong class="d-block text-gray-dark">@<%=data[i].name%> <small><%=ip[0]%>.<%=ip[1]%>.xx.xx</small></strong>
-							<span style="white-space: pre-wrap;"id="board_content<%=i%>"><%= data[i].content %></span>
+							<%- data[i].content %>
               <span id="tmp"></span>
-					</p>
+					</div>
 					</div>
 				<% } %>
 		</div>
@@ -105,20 +113,11 @@ body{background:#f5f6fa}
 </main>
 <div id="paging"></div>
 
+<% /* %>
 <!--
-<input type="button" value="ajax 버튼" id="ajax_btn">
--->
-<% let a = data[0].content; %>
-<script>
-let b = '<%=a%>';
-const tmp = document.getElementById('tmp');
-console.log(tmp);
-function setContent(str){
-document.querySelector('#board_content').innerHTML = str;
-}
 
-</script>
-<!--
+AJAX 통신 예제
+<input type="button" value="ajax 버튼" id="ajax_btn">
 <script>
 const btn  = document.getElementById("ajax_btn");
 
@@ -140,6 +139,7 @@ btn.addEventListener("click", () => {
 });
 </script>
 -->
+<%*/%>
 
 
 <!-- -->
