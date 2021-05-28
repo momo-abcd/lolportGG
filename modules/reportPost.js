@@ -3,7 +3,7 @@ const path = require('path');
 const mysql = require('mysql');
 const dbconfig = require('../DB/db');
 const connection = mysql.createConnection(dbconfig);
-var axios = require('axios');
+const axios = require('axios');
 
 
 const reportPost = function (req, res, next) {
@@ -11,7 +11,7 @@ const reportPost = function (req, res, next) {
         res.render('fileErr');
     }else {
         let name = encodeURI(req.body.nickname);
-        const apiKey = 'RGAPI-7fa0a3ee-37e8-4f3d-af32-130e8438a459';
+        const apiKey = 'RGAPI-0be0f02f-c33f-46e7-b95e-944f77a92c63';
         let reqRiotApi = `https://asia.api.riotgames.com/riot/account/v1/accounts/by-riot-id/${name}/kr1?api_key=${apiKey}`
         console.log('사진 : ', req.files);
         let imgStr = "";
@@ -21,6 +21,8 @@ const reportPost = function (req, res, next) {
                 imgStr += req.files[i].filename + ';';
             }
         }
+	    console.log('XXXXXXXXXXXXXXXXXXXXXXXXX');
+	    console.log(reqRiotApi);
         // riot api module
             axios.get(reqRiotApi)
             .then(axiosRes => {

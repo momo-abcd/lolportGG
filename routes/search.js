@@ -10,10 +10,14 @@ router.get('/userName/', function(req, res, next) {
   if(req.query.summonerName) {
     res.redirect(`/search/userName/${req.query.summonerName}`);
   }else {
-    res.send('123123123123');
+    res.redirect('/');
   }
 });
+
+
 router.get('/userName/:summonerName', function(req, res, next) {
+req.params.summonerName = req.params.summonerName.replace(/'/g,"");
+//console.log('DDDDDDDDDDDDDDDDDDDD',req.params.summonerName);
   let query1 = 
                 'select * from ' + 
                 '(select user.닉네임, report.리폿날짜, report.고의적_죽음, report.욕설, report.패드립, report.픽창_악의적_닷지유도, report.comment, report.Img ' +
@@ -33,6 +37,7 @@ router.get('/userName/:summonerName', function(req, res, next) {
     if(err){
       console.log(err);
     }
+    /*
     let checkData=[]
     for(let i=1;i<6;i++){
       if(rows[i][0] != undefined){
@@ -44,33 +49,43 @@ router.get('/userName/:summonerName', function(req, res, next) {
       let obj = rows[checkData[i]][0]
       allInfo.push(obj[Object.keys(obj)[0]]);
     }
+    */
 
-    console.log('-----------------------------------------');
-    console.log(rows[6][0].Img);
-    console.log(rows[6].length);
+    console.log('XXXXXXXXXXXXXXXXXXX', rows[6]);
+    if(rows[6] ===[]) console.log('YYYYYYYYYYYYYYY');
     allImgs = '';
-    for(let i=0;i<rows[6].length;i++){
-      allImgs += rows[6][i].Img;
-    }
-    allImgs += ';';
-    console.log(allImgs);
-    let arr = ['패드립수','욕설수','고의적죽음수','cs뺏어먹기수','닷지유도수'];
-
-    let data1 = {
-      패드립수: '',
-      욕설수:'',
-      고의적죽음수:'',
-      cs뺏어먹기수:'',
-      닷지유도수:'',
-    }
-    for(let i=1;i<6;i++){
-      if(rows[i][0] != undefined){
-        data1[arr[i-1]]=Object.values(rows[i][0])[0];
-      }else {
-        data1[arr[i-1]]=0;
+    if(rows[6].length == 0){
+      allImgs='';
+    res.render('search', {data:rows[0]});
+    } 
+    else{
+      console.log('-----------------------------------------');
+      console.log(rows[6][0].Img);
+      console.log(rows[6].length);
+      for(let i=0;i<rows[6].length;i++){
+        allImgs += rows[6][i].Img;
       }
+      allImgs += ';';
+      console.log(allImgs);
+      let arr = ['패드립수','욕설수','고의적죽음수','cs뺏어먹기수','닷지유도수'];
+
+      let data1 = {
+        패드립수: '',
+        욕설수:'',
+        고의적죽음수:'',
+        cs뺏어먹기수:'',
+        닷지유도수:'',
+      }
+      for(let i=1;i<6;i++){
+        if(rows[i][0] != undefined){
+          data1[arr[i-1]]=Object.values(rows[i][0])[0];
+        }else {
+          data1[arr[i-1]]=0;
+        }
+      }
+    res.render('search', {data:rows[0], allInfo:data1,allImgs:allImgs});
+      console.log('-----------------------------------------');
     }
-    console.log('-----------------------------------------');
 
     /*
        순서!!
@@ -85,9 +100,9 @@ router.get('/userName/:summonerName', function(req, res, next) {
 
     //console.log(allInfo)
     //res.render('search', {data:rows[0], allInfo:allInfo});
-    res.render('search', {data:rows[0], allInfo:data1,allImgs:allImgs});
     
   })
 });
 
 module.exports = router;
+

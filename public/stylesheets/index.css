@@ -71,3 +71,13 @@ a:hover {
 #go {
   font-size:50px;
 }
+
+@media (max-width:500px){
+	.form__field {
+		width:270px;
+	}
+	.btn--inside {
+		margin-left:-60px;
+		padding:10px 18px;
+	}
+}

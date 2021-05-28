@@ -44,7 +44,14 @@ position:relative;
 }
 
 body{background:#f5f6fa}
-
+.feedbackSize{
+	width:800px;
+}
+@media (max-width:450px){
+	.feedbackSize{
+		width:400px;
+	}
+}
 
 
 
@@ -81,7 +88,7 @@ body{background:#f5f6fa}
     </div>
   </div>
 
-  <div style="width:800px"class="my-3 p-3 bg-white rounded box-shadow">
+  <div class="feedbackSize my-3 p-3 bg-white rounded box-shadow">
     <h6 class="border-bottom border-gray pb-2 mb-0">Recent updates</h6>
 		<div id="feedback_page">
 				<% for(let i=0; i<data.length;i++) { %>

@@ -85,6 +85,7 @@ nav.primary-navigation {
     display:flex;
     flex-direction:column;
     /* padding: 120px 0 0 0; */
+    padding:0;
     text-align: center;
     font-size: 16px;
     margin-top:30px;
