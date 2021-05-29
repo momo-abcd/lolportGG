@@ -10,7 +10,7 @@ function openModal(imgs) {
     str = imgs.split(';');
   else 
     str = imgs;
-  console.log(str,123123123);
+  // console.log(str,123123123);
   const p = document.createElement("div");
   p.classList.add('modal');
   p.id = 'myModal';
@@ -44,7 +44,7 @@ function openModal(imgs) {
       isModalOn = false;
       post.removeChild(p);
       curIndex=0;
-      console.log(curIndex);
+      // console.log(curIndex);
     }
   }
   closeBtn.onclick = function() {
@@ -74,7 +74,7 @@ function plusSlides(btn) {
 }
 function showSlides(...args) {
   const slides = document.getElementsByClassName('mySlides')[0].children;
-    console.log(curIndex);
+    // console.log(curIndex);
   if(!args[0]){
     if(curIndex ==0) {
       slides[slides.length-1].style.display='none';
@@ -92,29 +92,3 @@ function showSlides(...args) {
   }
 const indexNum = document.getElementById("curIndex").textContent=curIndex+1;
 }
-
-/*
-function showSlides(acurIndex, slides) {
-  if(slides.children.length>1){
-    if(curIndex > slides.children.length-1) {
-      slides.children[slides.children.length-1].style.display='none';
-      curIndex = 0;
-      slides.children[curIndex].style.display='block';
-    }
-    else if(curIndex < 0) {
-      slides.children[0].style.display='none';
-      curIndex = slides.length;
-      slides.children[curIndex].style.display='block';
-    }else {
-      if(curIndex > 0)
-        slides.children[curIndex-1].style.display='none';
-      slides.children[curIndex].style.display='block';
-      console.log(curIndex);
-    }
-  }else {
-    slides.children[curIndex].style.display='block';
-  }
-
-
-}
-*/
