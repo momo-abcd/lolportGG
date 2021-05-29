@@ -4,9 +4,13 @@ function paging(totalData, dataPerPage, pageCount, currentPage){
   if(totalPage < currentPage){
     currentPage = totalPage;
   }
+  //console.log("현재 페이지 인덱스 :", currentPage);
   let pageGroup = Math.ceil(currentPage/pageCount);
 
-  console.log("pageGroup : " + pageGroup);
+  // console.log("pageGroup : " + pageGroup);
+  // console.log("totalData : " + totalData);
+  // console.log("totalPage : " + totalPage);
+
 
   // let last = pageGroup * pageCount;
   // let first
@@ -46,10 +50,10 @@ function paging(totalData, dataPerPage, pageCount, currentPage){
 
 
 
-  console.log("last : " + last);
-  console.log("first : " + first);
-  console.log("next : " + next);
-  console.log("prev : " + prev);
+  // console.log("last : " + last);
+  // console.log("first : " + first);
+  // console.log("next : " + next);
+  // console.log("prev : " + prev);
 
   let $pingingView = $("#paging");
   let html = "";

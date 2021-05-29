@@ -46,4 +46,9 @@ router.post('/feedback_send/',feedbackSendMiddleware, function(req, res) {
 });
 
 
+//Board Page Router!
+router.get('/freeBoard/', function(req, res, next) {
+    res.render('freeBoard');
+});
+
 module.exports = router;
