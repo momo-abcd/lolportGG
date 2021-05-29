@@ -1,21 +1,50 @@
 function paging(totalData, dataPerPage, pageCount, currentPage){
 
   let totalPage = Math.ceil(totalData/dataPerPage);
+  if(totalPage < currentPage){
+    currentPage = totalPage;
+  }
   let pageGroup = Math.ceil(currentPage/pageCount);
 
   console.log("pageGroup : " + pageGroup);
 
-  let last = pageGroup * pageCount;
-  let first
-  if (last > totalPage){
-    last = totalPage;
-     first = last - (pageCount-1)+1;
-  }else{
-     first = last - (pageCount-1);
+  // let last = pageGroup * pageCount;
+  // let first
+  // if (last > totalPage){
+  //   last = totalPage;
+  //    first = last - (pageCount-1)+1;
+  // }else{
+  //    first = last - (pageCount-1);
+  // }
+
+  // let next = last+1;
+  // let prev = first-1;
+  let first,last,next,prev;
+  if(currentPage < 6 && totalPage < 6){
+      last = totalPage;
+      first = 1;
+      prev = 0;
+      next = 0;
+  }else if(currentPage < 6){
+      last = 5;
+      first = 1;
+      prev = 0;
+      next = 6;
+  }else {
+    last = pageGroup * pageCount;
+    first
+    if (last > totalPage) {
+      last = totalPage;
+      first = last - (pageCount - 1) + 1;
+    } else {
+      first = last - (pageCount - 1);
+    }
+
+    next = last + 1;
+    prev = first - 1;
   }
 
-  let next = last+1;
-  let prev = first-1;
+
 
   console.log("last : " + last);
   console.log("first : " + first);
