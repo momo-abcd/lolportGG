@@ -1,0 +1,82 @@
+.fileContainer {
+    color:#000;
+}
+  .fileContainer input[type=file] {
+    position: absolute;
+    right: -9999px;
+    visibility: hidden;
+    opacity: 0;
+  }
+  
+ .fileContainer input[type=submit] {
+    position: relative;
+    background: #0c8fda;
+    display: inline-block;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 10px;
+    border: 0;
+    color: #fff;
+    width:100px;height:50px;
+    font-size:20px;
+  }
+ .fileContainer input[type=submit]:hover {
+    background: #0b7fc2;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.2s all;
+  }
+  
+.fileContainer label {
+    position: relative;
+    padding: 1rem 3rem;
+    background: #eee;
+    display: inline-block;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+.fileContainer label:hover {
+    background: #0c8fda;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.2s all;
+  }
+  
+ .fileContainer div.files {
+    background: #eee;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 10px;
+  }
+ .fileContainer div.files ul {
+    list-style: none;
+    padding: 0;
+    max-height: 150px;
+    overflow: auto;
+  }
+ .fileContainer div.files ul li {
+    padding: 0.5rem 0;
+    padding-right: 2rem;
+    position: relative;
+  }
+ .fileContainer div.files ul li i {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translatey(-50%);
+  }
+ .fileContainer div.fileContainer {
+    width: 100%;
+    width:300px;
+    padding: 0 2rem;
+  }
+  
+ .fileContainer span.file-size {
+    color: #999;
+    padding-left: 0.5rem;
+  }
+  .fileContainer #color {
+      color:#3b3535;
+  }

@@ -4,8 +4,11 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var reportRouter = require('./routes/report');
+/* routes 폴더에서 라우팅 모듈들을 선언 */
+const indexRouter = require('./routes/index');
+const reportRouter = require('./routes/report');
+const searchRouter = require('./routes/search');
+const bbsRouter = require('./routes/bbs');
 
 var app = express();
 
@@ -13,19 +16,24 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({
+  extended: true
+}));
+app.use(logger('dev'));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //router
 app.use('/', indexRouter);
-app.use('/report/', reportRouter);
+app.use('/report/',reportRouter);
+app.use('/search/',searchRouter)
+app.use('/bbs/',bbsRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  next(createError(404));
+  //next(createError(404));
+res.redirect('/');
 });
 
 // error handler

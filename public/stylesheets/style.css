@@ -1,19 +1,39 @@
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-a {
-  color: #00B7FF;
-}
-textarea{
-  resize:none;
-}
-
-.form-control {
-  width:500px;
-}
-
-.select2-container .select2-search--inline .select2-search__field{
-  margin-top:8px;
-}
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  }
+  ul {
+    list-style-type:none;
+  }
+  
+  a {
+    color: #00B7FF;
+  }
+  textarea{
+    resize:none;
+  }
+  
+  .form-control {
+    width:500px;
+  }
+  
+  .select2-container .select2-search--inline .select2-search__field{
+    margin-top:8px;
+  }
+  #summonerID {
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    padding:6px 3px;
+    outline:none;
+  }
+  #triangle-parent {
+    position: relative;
+    cursor: pointer;
+  }
+  #triangle {
+    font-size:20px;
+    position: absolute;
+    z-index:999;
+    left:470px;
+  }

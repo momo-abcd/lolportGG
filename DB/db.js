@@ -2,5 +2,7 @@ module.exports = {
     host:'localhost',
     user:'root',
     password:'yangxx123',
-    database:'lolport'
+    database:'mooseeDB',
+    multipleStatements:true
+
 };

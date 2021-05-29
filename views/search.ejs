@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/searchNav.css">
+    <link rel="stylesheet" href="/stylesheets/navBar.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/searchPage/cardPost.css">
+    <link rel="stylesheet" href="/stylesheets/searchPage/imageModal.css">
+    <link rel="stylesheet" href="/stylesheets/searchPage/userInfo.css">
+    <script src="/javascripts/includeHTML.js"></script>
+    <title>Document</title>
+    <style>
+    .searchUserInfo {
+width:100%;height:100%;
+display:flex;
+        justify-content:center;
+    }
+.searchUserInfo h2 {
+coloj:#242929;
+}
+    </style>
+</head>
+<body>
+  <div include-html="/htmls/searchNav.html"></div>
+  <% if(data[0] != undefined) { %>
+  <% include ./searchInclude/infoCard %>
+    <%# 비매너 유저 종합 정보 %>
+
+    <%# 비매너 유저 카드 포스트들 %>
+
+    <% for(let i=data.length-1; i>=0 ;i--) { %>
+      <% let a = data[i].Img.split(';') %>
+      <% let cool = data[i] %>
+      <% include ./searchInclude/cardPost %>
+    <% } %>
+
+    <%# 입력한 유저 정보가 없을 경우 %>
+    <% }else {  %>
+  <div class="cardParent">
+      <h2 style="color:#242929">MOOSEE에 등록되지 않은 비매너 유저입니다. 오타를 확인 후 다시 검색해주세요.!</h2>
+      </div>
+      <% } %>
+
+    <script>
+        includeHTML();
+    </script>
+    <script src="/javascripts/imageModal.js"></script>
+</body>
+</html>
